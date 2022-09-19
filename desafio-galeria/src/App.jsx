@@ -1,5 +1,5 @@
-import { Nav } from "./Components/Nav/Nav"
-import { GlobalStyled } from "./Components/GlobalStyled"
+import { Nav } from "./Components/NavBar/Nav"
+import { GlobalStyled } from "./GlobalStyles"
 
 function App() {
 

@@ -1,5 +1,4 @@
-const images = {
-  updates : [
+ export const data = [
     {
       id: 1,
       name: "Elefante",
@@ -73,4 +72,3 @@ const images = {
         "https://cdn.pixabay.com/photo/2020/06/06/16/40/milk-5267300_960_720.jpg"
     }
   ]
-}

@@ -1,15 +1,18 @@
 import styled from "styled-components";
 
-export const ContainerNav = styled.nav`
+export const NavContainer = styled.nav`
     display: flex;
-    background-color: #202020;
-    justify-content: space-between;
     width: 100%;
     height: 110px;
-    color: #999999;
+    background-color: #202020;
+    justify-content: space-between;
 `
 
-export const Logo = styled.img`
+export const Image = styled.img`
+    /* width: auto;
+    height: 80px;
+    margin: 10px 10px; */
+
     width: 68px;
     height: 68px;
     margin: 21px;
@@ -17,6 +20,11 @@ export const Logo = styled.img`
 `
 
 export const Input = styled.input`
+    /* width: 260px;
+    height: 35px;
+    padding: 5px 5px;
+    margin: 35px 35px; */
+
     display: flex;
     padding: 16px;
     gap: 16px;
@@ -27,23 +35,28 @@ export const Input = styled.input`
     flex-direction: row;
     align-items: center;
 
+    font-weight: 600;
+    line-height: 16px;
+    letter-spacing: 0em;
+    
+
     background-color: rgba(204, 204, 204, 0.16);;
     border-radius: 56px;
     border: 1px solid #CCCCCC;
     color: #CCCCCC;
     outline: none;
-
-    font-weight: 600;
-    line-height: 16px;
-    letter-spacing: 0em;
-
 `
 
-export const ContainerCards = styled.div`
-    background: #fff;
+export const ContainerMain = styled.main`
+    display: flex;
+    width: 100%;
+    height: 70%;
+    justify-content: center;
+    background-color: #fff;
+`
+
+export const ContainerTeste = styled.div`
     display: grid;
-    grid-gap: 5px;
-    grid-template-columns: 150px 150px 150px;
     grid-template-rows: 400px 400px 400px;
-    justify-content: space-around;
+    grid-template-columns: 550px 550px 550px;
 `
