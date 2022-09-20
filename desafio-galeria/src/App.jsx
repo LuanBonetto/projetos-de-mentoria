@@ -1,10 +1,13 @@
+import { Nav } from "./Components/NavBar/Nav"
+import { GlobalStyled } from "./GlobalStyles"
 
 function App() {
 
   return (
-    <div>
-      Hello World
-    </div>
+    <>
+      <GlobalStyled/>
+      <Nav/>
+    </>
   )
 }
 
