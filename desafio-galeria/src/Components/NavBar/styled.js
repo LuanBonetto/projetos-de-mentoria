@@ -57,6 +57,6 @@ export const ContainerMain = styled.main`
 
 export const ContainerTeste = styled.div`
     display: grid;
-    grid-template-rows: 400px 400px 400px;
-    grid-template-columns: 550px 550px 550px;
+    grid-template-rows: repeat(3, 1fr);
+    grid-template-columns: repeat(3, 550px);
 `
