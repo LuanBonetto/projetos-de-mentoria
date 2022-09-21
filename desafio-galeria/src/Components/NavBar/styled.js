@@ -60,3 +60,30 @@ export const ContainerTeste = styled.div`
     grid-template-rows: repeat(3, 1fr);
     grid-template-columns: repeat(3, 550px);
 `
+
+export const FormContainer = styled.form`
+    border: none;
+    padding: 0;
+`
+
+export const InputSearch = styled.input`
+    width: 320px;
+    height: 56px;
+    display: block;
+    margin: 27px 0;
+    padding: 9px 4px 9px 40px;
+    margin-right: 120px;
+    flex-direction: row;
+    align-items: center;
+
+    font-weight: 600;
+    line-height: 16px;
+    letter-spacing: 0em;
+    
+
+    background: transparent url('../../public/images/search.png') no-repeat 13px center;
+    border-radius: 56px;
+    border: 1px solid #CCCCCC;
+    color: #CCCCCC;
+    outline: none;
+`

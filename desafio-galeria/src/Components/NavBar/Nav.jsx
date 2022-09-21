@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import { NavContainer, Image, Input, ContainerMain, ContainerTeste } from "./styled";
+import { NavContainer, Image, Input, ContainerMain, ContainerTeste, FormContainer, InputSearch } from "./styled";
 
 import logo from '../../assets/logo.svg'
 import { Card } from "../Card/Card";
@@ -31,7 +31,10 @@ export function Nav() {
         <>
             <NavContainer>
                     <Image src={logo} alt='Logo Desafio'/>
-                    <Input type='text' placeholder="Digite aqui" onChange={(e) => setSeach(e.target.value)} />
+                    {/* <Input type='text' placeholder="Digite aqui" onChange={(e) => setSeach(e.target.value)} /> */}
+                    <FormContainer>
+                        <InputSearch type='text' placeholder="Digite aqui" onChange={(e) => setSeach(e.target.value)} />
+                    </FormContainer>
             </NavContainer>
             <ContainerMain>
                     <ContainerTeste>
