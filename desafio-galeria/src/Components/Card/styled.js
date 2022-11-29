@@ -60,5 +60,4 @@ export const ContainerButtons = styled.div`
   justify-content: space-between;
   height: 50px;
   /* align-items: flex-end; */
-  float: right;
 `;

@@ -3,13 +3,13 @@ import { Button, Container, ImgContainer, InputContainer } from "./styled";
 import closeImage from "../../assets/close.svg";
 import { InputComponent } from "../Input/input";
 
-export function ImageForm() {
+export function ImageForm(props) {
   return (
     <Container>
       <ImgContainer>
         <img src={closeImage} alt="icone de fechar" />
       </ImgContainer>
-      <span>Inserir Nova Imagem</span>
+      <span>{props.span}</span>
       <InputContainer>
         <InputComponent
           type="text"

@@ -11,6 +11,7 @@ import {
   ButtonFixed,
 } from "./styled";
 import { ImageForm } from "../FormNewImage/NewImage";
+import { DeleteImage } from "../PopUpDeleteImage/DeleteImage";
 
 import logo from "../../assets/logo.svg";
 import { Card } from "../Card/Card";
@@ -61,7 +62,9 @@ export function Nav() {
         </ContainerTeste>
         <ButtonFixed>+</ButtonFixed>
       </ContainerMain>
-      <ImageForm />
+      <ImageForm span="Inserir Nova Imagem" />
+      <ImageForm span="Editar Imagem" />
+      <DeleteImage />
     </>
   );
 }
