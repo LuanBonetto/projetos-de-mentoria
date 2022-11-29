@@ -9,6 +9,8 @@ import {
   ContainerMain,
   ContainerTeste,
 } from "./styled";
+import { InputComponent } from "../Input/input";
+import { ImageForm } from "../FormNewImage/NewImage";
 
 import logo from "../../assets/logo.svg";
 import { Card } from "../Card/Card";
@@ -57,18 +59,8 @@ export function Nav() {
               />
             ))}
         </ContainerTeste>
-        {/* {image.map((img, index) => {
-          return (
-            <Card
-              key={index}
-              image={img.url}
-              name={img.name}
-              likes={img.likes}
-              views={img.views}
-            />
-          );
-        })} */}
       </ContainerMain>
+      <ImageForm />
     </>
   );
 }
