@@ -61,7 +61,7 @@ export function Nav() {
         </ContainerTeste>
         <ButtonFixed>+</ButtonFixed>
       </ContainerMain>
-      {/* <ImageForm /> */}
+      <ImageForm />
     </>
   );
 }
