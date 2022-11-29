@@ -8,8 +8,8 @@ import {
   Input,
   ContainerMain,
   ContainerTeste,
+  ButtonFixed,
 } from "./styled";
-import { InputComponent } from "../Input/input";
 import { ImageForm } from "../FormNewImage/NewImage";
 
 import logo from "../../assets/logo.svg";
@@ -59,8 +59,9 @@ export function Nav() {
               />
             ))}
         </ContainerTeste>
+        <ButtonFixed>+</ButtonFixed>
       </ContainerMain>
-      <ImageForm />
+      {/* <ImageForm /> */}
     </>
   );
 }
