@@ -1,53 +1,74 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import abbreviateNumber from "../../utils/utils";
+import axios from "axios";
 
-import { NavContainer, Image, Input, ContainerMain, ContainerTeste } from "./styled";
+import {
+  NavContainer,
+  Image,
+  Input,
+  ContainerMain,
+  ContainerTeste,
+} from "./styled";
 
-import logo from '../../assets/logo.svg'
+import logo from "../../assets/logo.svg";
 import { Card } from "../Card/Card";
 
-import {data} from '../../../data.js'
+// import { data } from "../../../data.js";
 
 export function Nav() {
-    const [search, setSeach] = useState("")
+  const [search, setSeach] = useState("");
+  const [image, setImage] = useState([]);
 
-    function abbreviateNumber(value) {
-        var newValue = value;
-        if (value >= 1000) {
-            let suffixes = ["", "mil", "milhoes", "bilhoes","trilhoes"];
-            let suffixNum = Math.floor( (""+value).length/3 );
-            let shortValue = '';
-            for (let precision = 2; precision >= 1; precision--) {
-                shortValue = parseFloat( (suffixNum != 0 ? (value / Math.pow(1000,suffixNum) ) : value).toPrecision(precision));
-                let dotLessShortValue = (shortValue + '').replace(/[^a-zA-Z 0-9]+/g,'');
-                if (dotLessShortValue.length <= 2) { break; }
-            }
-            if (shortValue % 1 != 0)  shortValue = shortValue.toFixed(1);
-            newValue = shortValue+suffixes[suffixNum];
-        }
-        return newValue;
-    }
+  useEffect(() => {
+    axios
+      .get("https://mentoria-api.vercel.app/api/images")
+      .then((response) => setImage(response.data));
+  }, []);
 
-    return (
-        <>
-            <NavContainer>
-                    <Image src={logo} alt='Logo Desafio'/>
-                    <Input type='text' placeholder="Digite aqui" onChange={(e) => setSeach(e.target.value)} />
-            </NavContainer>
-            <ContainerMain>
-                    <ContainerTeste>
-                        {
-                            data.filter((info) => {
-                                if(search == ""){
-                                    return info
-                                } else if(info.name.toLowerCase().includes(search.toLowerCase())){
-                                    return info
-                                }
-                            }).map((item, index) => (
-                                <Card key={index} image={item.url} name={item.name} likes={abbreviateNumber(item.likes)} views={abbreviateNumber(item.views)}/>
-                            ))
-                        }
-                    </ContainerTeste>
-            </ContainerMain>
-        </>
-    )
+  return (
+    <>
+      <NavContainer>
+        <Image src={logo} alt="Logo Desafio" />
+        <Input
+          type="text"
+          placeholder="Digite aqui"
+          onChange={(e) => setSeach(e.target.value)}
+        />
+      </NavContainer>
+      <ContainerMain>
+        <ContainerTeste>
+          {image
+            .filter((info) => {
+              if (search == "") {
+                return info;
+              } else if (
+                info.name.toLowerCase().includes(search.toLowerCase())
+              ) {
+                return info;
+              }
+            })
+            .map((item, index) => (
+              <Card
+                key={index}
+                image={item.url}
+                name={item.name}
+                likes={abbreviateNumber(item.likes)}
+                views={abbreviateNumber(item.views)}
+              />
+            ))}
+        </ContainerTeste>
+        {/* {image.map((img, index) => {
+          return (
+            <Card
+              key={index}
+              image={img.url}
+              name={img.name}
+              likes={img.likes}
+              views={img.views}
+            />
+          );
+        })} */}
+      </ContainerMain>
+    </>
+  );
 }
