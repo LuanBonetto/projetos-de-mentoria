@@ -75,3 +75,79 @@ export const ButtonFixed = styled.button`
   border: 1px solid #000;
   background-color: #000;
 `;
+
+//MODAL STYLE
+
+export const ContainerOverlay = styled.div`
+  display: flex;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  position: fixed;
+  justify-content: center;
+  align-items: center;
+  background: rgb(49, 49, 49, 0.8);
+`;
+
+export const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 433px;
+  height: 305px;
+  border-radius: 10px;
+  background-color: #d9d9d9;
+  color: #000;
+
+  span {
+    display: flex;
+    width: 288px;
+    height: 20px;
+    justify-content: center;
+
+    font-size: 20px;
+    line-height: 20px;
+    font-weight: 600;
+  }
+`;
+
+export const ImgContainer = styled.div`
+  display: flex;
+  width: 100%;
+  justify-content: end;
+  padding: 8px 8px 0 0;
+
+  button {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+  }
+`;
+
+export const InputContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin-top: 42px;
+  gap: 20px;
+`;
+
+export const Button = styled.button`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 35px;
+  width: 320px;
+  height: 51px;
+  border-radius: 4px;
+
+  font-size: 20px;
+  line-height: 20px;
+  font-weight: 600;
+  cursor: pointer;
+
+  color: #fff;
+  background-color: #000;
+`;
