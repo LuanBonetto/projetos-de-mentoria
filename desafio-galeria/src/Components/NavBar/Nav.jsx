@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import abbreviateNumber from "../../utils/utils";
 import axios from "axios";
+import { toast } from "react-toastify";
 
 import {
   NavContainer,
@@ -30,8 +31,41 @@ export function Nav() {
   const [image, setImage] = useState([]);
   const [modal, setModal] = useState(false);
 
+  const [urlImage, setUrlImage] = useState("");
+  const [nameImage, setNameImage] = useState("");
+
   const openModal = () => {
     setModal(!modal);
+  };
+
+  const newImage = {
+    name: nameImage,
+    url: urlImage,
+  };
+
+  const configToast = {
+    position: "top-right",
+    autoClose: 5000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: "dark",
+  };
+
+  const addNewImage = () => {
+    axios
+      .post("https://mentoria-api.vercel.app/api/images", newImage)
+      .then((response) => {
+        alert("Nova imagem postada com sucesso");
+        // toast.success("Nova imagem postada com sucesso! 😃", configToast);
+        console.log(response.data, "deu certo");
+      })
+      .catch((error) => {
+        console.log(error);
+        // toast.error("Erro ao postar imagem 😵", configToast);
+      });
   };
 
   useEffect(() => {
@@ -89,15 +123,21 @@ export function Nav() {
                   placeholder="Nome"
                   width={320}
                   height={38}
+                  value={nameImage}
+                  onChange={(e) => setNameImage(e.target.value)}
                 />
                 <InputComponent
                   type="text"
                   placeholder="Url da imagem"
                   width={320}
                   height={38}
+                  value={urlImage}
+                  onChange={(e) => console.log(setUrlImage(e.target.value))}
                 />
               </InputContainer>
-              <Button type="submit">Enviar</Button>
+              <Button type="submit" onClick={addNewImage}>
+                Enviar
+              </Button>
             </Container>
           </ContainerOverlay>
         )}

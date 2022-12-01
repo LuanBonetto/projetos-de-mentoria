@@ -8,6 +8,8 @@ export function InputComponent(props) {
       width={props.width}
       height={props.height}
       placeholder={props.placeholder}
+      onChange={props.onChange}
+      value={props.value}
     />
   );
 }
