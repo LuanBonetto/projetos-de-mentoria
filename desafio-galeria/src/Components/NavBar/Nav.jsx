@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import abbreviateNumber from "../../utils/utils";
 import axios from "axios";
-import { toast } from "react-toastify";
+// import { toast } from "react-toastify";
 
 import {
   NavContainer,
@@ -72,7 +72,7 @@ export function Nav() {
     axios
       .get("https://mentoria-api.vercel.app/api/images")
       .then((response) => setImage(response.data));
-  }, []);
+  }, [image]);
 
   return (
     <>
