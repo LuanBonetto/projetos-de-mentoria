@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 
 import {
   CardContainer,
@@ -16,6 +16,8 @@ import {
   ContainerOverlay,
   Button,
   InputContainer,
+  ContainerDelete,
+  ContainerButtonsGarbage,
 } from "../../Components/NavBar/styled";
 import closeImage from "../../assets/close.svg";
 
@@ -28,8 +30,6 @@ import EditIcon from "../../assets/editIcon.svg";
 import GarbageIcon from "../../assets/garbageIcon.svg";
 
 export function Card(props) {
-  // const [modal, setModal] = useState(false);
-
   return (
     <CardContainer>
       <ContainerImageCard>
@@ -65,15 +65,46 @@ export function Card(props) {
                     onChange={props.onChangeUrl}
                   />
                 </InputContainer>
-                <Button type="submit" onClick={props.editImage}>
+                <Button
+                  type="submit"
+                  onClick={props.editImage}
+                  color="#fff"
+                  backgroundColor="#000"
+                >
                   Enviar
                 </Button>
               </Container>
             </ContainerOverlay>
           )}
-          <ButtonEdit>
+          <ButtonEdit onClick={props.openModalGarbage}>
             <img src={GarbageIcon} alt="" />
           </ButtonEdit>
+          {props.estadoGarbage && (
+            <ContainerOverlay>
+              <ContainerDelete>
+                <span>{props.spanTitleGarbage}</span>
+                <ContainerButtonsGarbage>
+                  <Button
+                    type="submit"
+                    onClick={props.deleteImage}
+                    color="#fff"
+                    backgroundColor="#000"
+                    width="true"
+                  >
+                    Sim
+                  </Button>
+                  <Button
+                    type="submit"
+                    onClick={props.notDelete}
+                    color="#000"
+                    width="true"
+                  >
+                    Não
+                  </Button>
+                </ContainerButtonsGarbage>
+              </ContainerDelete>
+            </ContainerOverlay>
+          )}
         </ContainerButtons>
       </ContainerImageCard>
       <ContainerInfo>

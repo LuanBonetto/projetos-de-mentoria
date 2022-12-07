@@ -139,7 +139,7 @@ export const Button = styled.button`
   justify-content: center;
   align-items: center;
   margin-top: 35px;
-  width: 320px;
+  width: ${(props) => (props.width ? "193px" : "320px")};
   height: 51px;
   border-radius: 4px;
 
@@ -148,6 +148,36 @@ export const Button = styled.button`
   font-weight: 600;
   cursor: pointer;
 
-  color: #fff;
-  background-color: #000;
+  color: ${(props) => props.color};
+  background-color: ${(props) => props.backgroundColor};
+`;
+
+// MODAL DELETE STYLE
+
+export const ContainerDelete = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 457px;
+  height: 189px;
+  border-radius: 10px;
+  background-color: #d9d9d9;
+  padding-top: 31px;
+
+  span {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    color: #000;
+
+    font-size: 20px;
+    line-height: 20px;
+    font-weight: 600;
+  }
+`;
+
+export const ContainerButtonsGarbage = styled.div`
+  display: flex;
+  gap: 14px;
+  margin-top: 20px;
 `;

@@ -31,6 +31,7 @@ export function Nav() {
   const [image, setImage] = useState([]);
   const [modal, setModal] = useState(false);
   const [modalEdit, setModalEdit] = useState(false);
+  const [modalDelete, setModalDelete] = useState(false);
 
   const [urlImage, setUrlImage] = useState("");
   const [nameImage, setNameImage] = useState("");
@@ -40,6 +41,10 @@ export function Nav() {
 
   const openModalEdit = () => {
     setModalEdit(!modalEdit);
+  };
+
+  const openModalDelete = () => {
+    setModalDelete(!modalDelete);
   };
 
   const openModal = () => {
@@ -78,18 +83,21 @@ export function Nav() {
       url: urlEditImage,
     };
     const id = image._id;
+    console.log(id);
     await axios.put(
       `https://mentoria-api.vercel.app/api/images/${id}`,
       editContent
     );
-    // const imagesClone = [...image];
-    // const index = imagesClone.indexOf(image);
-    // imagesClone[index] = { ...image };
-    setImage(imagesClone);
 
     console.log("enviada");
     console.log("StateName ", nameEditImage);
     console.log("StateUrl ", urlEditImage);
+  };
+
+  const deleteImage = async (image) => {
+    const id = image._id;
+    await axios.delete(`https://mentoria-api.vercel.app/api/images/${id}`);
+    alert("Imagem apagada. Por favor recarregue a página");
   };
 
   useEffect(() => {
@@ -146,7 +154,12 @@ export function Nav() {
                 onChangeUrl={(e) =>
                   console.log(setUrlEditImage(e.target.value))
                 }
-                editImage={() => editImage(image)}
+                editImage={() => editImage(item)}
+                openModalGarbage={openModalDelete}
+                estadoGarbage={modalDelete}
+                spanTitleGarbage="Deseja realmente deletar essa imagem?"
+                deleteImage={() => deleteImage(item)}
+                notDelete={openModalDelete}
               />
             ))}
         </ContainerTeste>
@@ -179,7 +192,12 @@ export function Nav() {
                   onChange={(e) => console.log(setUrlImage(e.target.value))}
                 />
               </InputContainer>
-              <Button type="submit" onClick={addNewImage}>
+              <Button
+                type="submit"
+                onClick={addNewImage}
+                color="#fff"
+                backgroundColor="#000"
+              >
                 Enviar
               </Button>
             </Container>
