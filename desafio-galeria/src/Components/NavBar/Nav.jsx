@@ -30,9 +30,17 @@ export function Nav() {
   const [search, setSeach] = useState("");
   const [image, setImage] = useState([]);
   const [modal, setModal] = useState(false);
+  const [modalEdit, setModalEdit] = useState(false);
 
   const [urlImage, setUrlImage] = useState("");
   const [nameImage, setNameImage] = useState("");
+
+  const [nameEditImage, setNameEditImage] = useState("");
+  const [urlEditImage, setUrlEditImage] = useState("");
+
+  const openModalEdit = () => {
+    setModalEdit(!modalEdit);
+  };
 
   const openModal = () => {
     setModal(!modal);
@@ -43,24 +51,20 @@ export function Nav() {
     url: urlImage,
   };
 
-  const configToast = {
-    position: "top-right",
-    autoClose: 5000,
-    hideProgressBar: false,
-    closeOnClick: true,
-    pauseOnHover: true,
-    draggable: true,
-    progress: undefined,
-    theme: "dark",
+  const clearField = () => {
+    setNameImage("");
+    setUrlImage("");
   };
 
-  const addNewImage = () => {
-    axios
+  const addNewImage = async () => {
+    await axios
       .post("https://mentoria-api.vercel.app/api/images", newImage)
       .then((response) => {
         alert("Nova imagem postada com sucesso");
         // toast.success("Nova imagem postada com sucesso! 😃", configToast);
         console.log(response.data, "deu certo");
+        console.log("O id q vamos atualizar: ", response.data._id);
+        clearField();
       })
       .catch((error) => {
         console.log(error);
@@ -68,12 +72,41 @@ export function Nav() {
       });
   };
 
-  useEffect(() => {
-    axios
-      .get("https://mentoria-api.vercel.app/api/images")
-      .then((response) => setImage(response.data));
-  }, [image]);
+  const editImage = async (image) => {
+    const editContent = {
+      name: nameEditImage,
+      url: urlEditImage,
+    };
+    const id = image._id;
+    await axios.put(
+      `https://mentoria-api.vercel.app/api/images/${id}`,
+      editContent
+    );
+    // const imagesClone = [...image];
+    // const index = imagesClone.indexOf(image);
+    // imagesClone[index] = { ...image };
+    setImage(imagesClone);
 
+    console.log("enviada");
+    console.log("StateName ", nameEditImage);
+    console.log("StateUrl ", urlEditImage);
+  };
+
+  useEffect(() => {
+    const getAllImage = async () => {
+      const response = await axios.get(
+        "https://mentoria-api.vercel.app/api/images"
+      );
+      setImage(response.data);
+    };
+    getAllImage();
+  }, []);
+
+  // useEffect(() => {
+  //   axios
+  //     .put("https://mentoria-api.vercel.app/api/images/:id", image)
+  //     .then((response) => console.log("fazendo o put"));
+  // }, []);
   return (
     <>
       <NavContainer>
@@ -103,6 +136,17 @@ export function Nav() {
                 name={item.name}
                 likes={abbreviateNumber(item.likes)}
                 views={abbreviateNumber(item.views)}
+                openModal={openModalEdit}
+                estadoParaAbrir={modalEdit}
+                onClick={openModalEdit}
+                spanTitle="Editar Imagem"
+                valueName={nameEditImage}
+                onChangeName={(e) => setNameEditImage(e.target.value)}
+                valueUrl={urlEditImage}
+                onChangeUrl={(e) =>
+                  console.log(setUrlEditImage(e.target.value))
+                }
+                editImage={() => editImage(image)}
               />
             ))}
         </ContainerTeste>
