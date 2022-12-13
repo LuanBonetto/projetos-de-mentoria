@@ -121,9 +121,3 @@ export function Card(props) {
     </CardContainer>
   );
 }
-
-{
-  /* <ButtonEdit>
-  <img src={EditIcon} alt="" />
-</ButtonEdit> */
-}

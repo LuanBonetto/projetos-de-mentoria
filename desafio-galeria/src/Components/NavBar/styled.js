@@ -26,7 +26,7 @@ export const Input = styled.input`
     margin: 35px 35px; */
 
   display: flex;
-  padding: 16px;
+  /* padding: 16px; */
   gap: 16px;
   width: 320px;
   height: 56px;
@@ -34,6 +34,8 @@ export const Input = styled.input`
   margin-right: 120px;
   flex-direction: row;
   align-items: center;
+  /* padding-left: 56px; */
+  padding: 20px 16px 20px 56px;
 
   font-weight: 600;
   line-height: 16px;
@@ -54,10 +56,14 @@ export const ContainerMain = styled.main`
   background-color: #fff;
 `;
 
-export const ContainerTeste = styled.div`
-  display: grid;
+export const ContainerImages = styled.div`
+  /* display: grid;
   grid-template-rows: 400px 400px 400px;
-  grid-template-columns: 550px 550px 550px;
+  grid-template-columns: 550px 550px 550px; */
+
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 `;
 
 export const ButtonFixed = styled.button`
