@@ -14,6 +14,7 @@ export const CardImage = styled.img`
   width: 355px;
   height: 277px;
   background-color: orange;
+  object-fit: cover;
 `;
 
 export const ContainerInfo = styled.div`
@@ -72,7 +73,7 @@ export const ButtonEdit = styled.button`
 
 export const ContainerImageCard = styled.div`
   display: flex;
-  width: 85%;
+  /* width: 98%; */
 
   &:hover ${ContainerButtons} {
     display: flex;

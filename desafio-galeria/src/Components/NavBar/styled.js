@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { motion } from "framer-motion";
 
 export const NavContainer = styled.nav`
   display: flex;
@@ -6,6 +7,11 @@ export const NavContainer = styled.nav`
   height: 110px;
   background-color: #202020;
   justify-content: space-between;
+
+  @media screen and (max-width: 1000px) {
+    /* display: flex;
+    flex-wrap: wrap; */
+  }
 `;
 
 export const Image = styled.img`
@@ -15,8 +21,8 @@ export const Image = styled.img`
 
   width: 68px;
   height: 68px;
-  margin: 21px;
-  margin-left: 120px;
+  margin: 21px 21px 21px 120px;
+  /* margin-left: 120px; */
 `;
 
 export const Input = styled.input`
@@ -30,8 +36,8 @@ export const Input = styled.input`
   gap: 16px;
   width: 320px;
   height: 56px;
-  margin: 27px 0;
-  margin-right: 120px;
+  margin: 27px 120px 27px 0;
+  /* margin-right: 120px; */
   flex-direction: row;
   align-items: center;
   /* padding-left: 56px; */
@@ -57,18 +63,23 @@ export const ContainerMain = styled.main`
 `;
 
 export const ContainerImages = styled.div`
-  /* display: grid;
+  display: grid;
   grid-template-rows: 400px 400px 400px;
-  grid-template-columns: 550px 550px 550px; */
+  grid-template-columns: 550px 550px 550px;
 
-  display: flex;
+  @media screen and (max-width: 1660px) {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  /* display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: center; */
 `;
 
 //MODAL STYLE
 
-export const ContainerOverlay = styled.div`
+export const ContainerOverlay = styled(motion.div)`
   display: flex;
   width: 100%;
   height: 100%;
@@ -80,6 +91,8 @@ export const ContainerOverlay = styled.div`
   justify-content: center;
   align-items: center;
   background: rgb(49, 49, 49, 0.8);
+  /* opacity: 0;
+    transition: opacity 2000ms ease-in-out; */
 `;
 
 export const Container = styled.div`

@@ -39,7 +39,11 @@ export function Card(props) {
             <img src={EditIcon} alt="" />
           </ButtonEdit>
           {props.isOpen && (
-            <ContainerOverlay>
+            <ContainerOverlay
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ type: "spring" }}
+            >
               <Container>
                 <ImgContainer>
                   <button onClick={props.onClick}>
@@ -78,7 +82,11 @@ export function Card(props) {
             <img src={GarbageIcon} alt="" />
           </ButtonEdit>
           {props.isOpenGarbage && (
-            <ContainerOverlay>
+            <ContainerOverlay
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ type: "spring" }}
+            >
               <ContainerDelete>
                 <span>{props.spanTitleGarbage}</span>
                 <ContainerButtonsGarbage>

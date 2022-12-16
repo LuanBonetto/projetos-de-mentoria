@@ -30,6 +30,7 @@ export function Nav() {
   const [modal, setModal] = useState(false);
   const [modalEdit, setModalEdit] = useState(false);
   const [modalDelete, setModalDelete] = useState(false);
+  const [openHambuguer, setOpenHamburguer] = useState(false);
 
   const [urlImage, setUrlImage] = useState("");
   const [nameImage, setNameImage] = useState("");
@@ -191,7 +192,11 @@ export function Nav() {
 
         <ButtonFixed onClick={openModal}>+</ButtonFixed>
         {modal && (
-          <ContainerOverlay onClick={openModal}>
+          <ContainerOverlay
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ type: "spring", duration: 0.8 }}
+          >
             <Container>
               <ImgContainer>
                 <button onClick={openModal}>
