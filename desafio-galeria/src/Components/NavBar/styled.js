@@ -66,22 +66,6 @@ export const ContainerImages = styled.div`
   justify-content: center;
 `;
 
-export const ButtonFixed = styled.button`
-  position: fixed;
-  right: 23px;
-  bottom: 22px;
-  width: 71px;
-  height: 71px;
-
-  font-size: 25px;
-  color: #ffffff;
-  cursor: pointer;
-
-  border-radius: 36px;
-  border: 1px solid #000;
-  background-color: #000;
-`;
-
 //MODAL STYLE
 
 export const ContainerOverlay = styled.div`
@@ -140,24 +124,6 @@ export const InputContainer = styled.div`
   gap: 20px;
 `;
 
-export const Button = styled.button`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 35px;
-  width: ${(props) => (props.width ? "193px" : "320px")};
-  height: 51px;
-  border-radius: 4px;
-
-  font-size: 20px;
-  line-height: 20px;
-  font-weight: 600;
-  cursor: pointer;
-
-  color: ${(props) => props.color};
-  background-color: ${(props) => props.backgroundColor};
-`;
-
 // MODAL DELETE STYLE
 
 export const ContainerDelete = styled.div`
@@ -185,5 +151,22 @@ export const ContainerDelete = styled.div`
 export const ContainerButtonsGarbage = styled.div`
   display: flex;
   gap: 14px;
-  margin-top: 20px;
+  margin-top: 54px;
+`;
+
+//EDITANDO BUTTONS
+export const ButtonFixed = styled.button`
+  position: fixed;
+  right: 23px;
+  bottom: 22px;
+  width: 71px;
+  height: 71px;
+
+  font-size: 25px;
+  color: #ffffff;
+  cursor: pointer;
+
+  border-radius: 36px;
+  border: 1px solid #000;
+  background-color: #000;
 `;

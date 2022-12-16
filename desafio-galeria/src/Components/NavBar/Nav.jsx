@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import abbreviateNumber from "../../utils/utils";
 import axios from "axios";
-// import { toast } from "react-toastify";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 import {
   NavContainer,
@@ -10,7 +11,6 @@ import {
   ContainerMain,
   ContainerImages,
   ButtonFixed,
-  Button,
   Container,
   ImgContainer,
   InputContainer,
@@ -22,6 +22,7 @@ import { InputComponent } from "../Input/input";
 import logo from "../../assets/logo.svg";
 import lupa from "../../assets/search.svg";
 import { Card } from "../Card/Card";
+import ButtonMain from "../Button/Button";
 
 export function Nav() {
   const [search, setSeach] = useState("");
@@ -36,6 +37,18 @@ export function Nav() {
   const [nameEditImage, setNameEditImage] = useState("");
   const [urlEditImage, setUrlEditImage] = useState("");
 
+  //CONFIG TOASTFY
+  const configToastify = {
+    position: "top-right",
+    autoClose: 5000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: "dark",
+  };
+
   //CONTROLE DE ESTADO
   const openModalEdit = () => {
     setModalEdit(!modalEdit);
@@ -47,12 +60,6 @@ export function Nav() {
 
   const openModal = () => {
     setModal(!modal);
-  };
-
-  //IMAGEM A SER INSERIDA
-  const newImage = {
-    name: nameImage,
-    url: urlImage,
   };
 
   //LIMPAR O CAMPO
@@ -68,12 +75,19 @@ export function Nav() {
   //FUNCOES CRUD
   //CREATE
   const addNewImage = async () => {
+    //IMAGEM A SER INSERIDA
+    const newImage = {
+      name: nameImage,
+      url: urlImage,
+    };
+
     await axios
       .post("https://mentoria-api.vercel.app/api/images", newImage)
       .then((response) => {
-        alert("Nova imagem postada com sucesso");
+        toast.success("Imagem postada com sucesso!", configToastify);
         clearField();
         openModal();
+        getAllImage();
       })
       .catch((error) => {
         console.log(error);
@@ -91,28 +105,33 @@ export function Nav() {
       `https://mentoria-api.vercel.app/api/images/${id}`,
       editContent
     );
+    toast.success("Imagem editada com sucesso!", configToastify);
     clearFieldEdit();
     openModalEdit();
+    getAllImage();
   };
 
   //DELETE
   const deleteImage = async (image) => {
     const id = image._id;
     await axios.delete(`https://mentoria-api.vercel.app/api/images/${id}`);
-    alert("Imagem apagada com sucesso!");
+    toast.success("Imagem deletada com sucesso!", configToastify);
     openModalDelete();
+    getAllImage();
+  };
+
+  //SHOW ALL IMAGE
+  const getAllImage = async () => {
+    const response = await axios.get(
+      "https://mentoria-api.vercel.app/api/images"
+    );
+    setImages(response.data);
   };
 
   //READ
   useEffect(() => {
-    const getAllImage = async () => {
-      const response = await axios.get(
-        "https://mentoria-api.vercel.app/api/images"
-      );
-      setImages(response.data);
-    };
     getAllImage();
-  }, [images]);
+  }, []);
 
   return (
     <>
@@ -153,7 +172,7 @@ export function Nav() {
                 likes={abbreviateNumber(item.likes)}
                 views={abbreviateNumber(item.views)}
                 openModal={openModalEdit}
-                estadoParaAbrir={modalEdit}
+                isOpen={modalEdit}
                 onClick={openModalEdit}
                 spanTitle="Editar Imagem"
                 valueName={nameEditImage}
@@ -162,7 +181,7 @@ export function Nav() {
                 onChangeUrl={(e) => setUrlEditImage(e.target.value)}
                 editImage={() => editImage(item)}
                 openModalGarbage={openModalDelete}
-                estadoGarbage={modalDelete}
+                isOpenGarbage={modalDelete}
                 spanTitleGarbage="Deseja realmente deletar essa imagem?"
                 deleteImage={() => deleteImage(item)}
                 notDelete={openModalDelete}
@@ -172,7 +191,7 @@ export function Nav() {
 
         <ButtonFixed onClick={openModal}>+</ButtonFixed>
         {modal && (
-          <ContainerOverlay>
+          <ContainerOverlay onClick={openModal}>
             <Container>
               <ImgContainer>
                 <button onClick={openModal}>
@@ -198,20 +217,16 @@ export function Nav() {
                   onChange={(e) => setUrlImage(e.target.value)}
                 />
               </InputContainer>
-              <Button
+              <ButtonMain
                 type="submit"
                 onClick={addNewImage}
-                color="#fff"
-                backgroundColor="#000"
-              >
-                Enviar
-              </Button>
+                children="Enviar"
+                style={{ marginTop: "35px" }}
+              />
             </Container>
           </ContainerOverlay>
         )}
       </ContainerMain>
-      {/* <ImageForm span="Editar Imagem" />
-      <DeleteImage /> */}
     </>
   );
 }

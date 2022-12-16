@@ -27,7 +27,7 @@ export const ContainerInfo = styled.div`
 
 export const ContainerDiv = styled.div`
   display: flex;
-  width: 50%;
+  width: 25%;
   justify-content: space-between;
   background-color: #fff;
   color: #000;

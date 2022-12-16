@@ -14,7 +14,6 @@ import {
   Container,
   ImgContainer,
   ContainerOverlay,
-  Button,
   InputContainer,
   ContainerDelete,
   ContainerButtonsGarbage,
@@ -22,6 +21,7 @@ import {
 import closeImage from "../../assets/close.svg";
 
 import { InputComponent } from "../Input/input";
+import ButtonMain from "../Button/Button";
 
 import { BsFillEyeFill } from "react-icons/bs";
 import { AiFillLike } from "react-icons/ai";
@@ -38,7 +38,7 @@ export function Card(props) {
           <ButtonEdit onClick={props.openModal}>
             <img src={EditIcon} alt="" />
           </ButtonEdit>
-          {props.estadoParaAbrir && (
+          {props.isOpen && (
             <ContainerOverlay>
               <Container>
                 <ImgContainer>
@@ -65,42 +65,37 @@ export function Card(props) {
                     onChange={props.onChangeUrl}
                   />
                 </InputContainer>
-                <Button
+                <ButtonMain
                   type="submit"
                   onClick={props.editImage}
-                  color="#fff"
-                  backgroundColor="#000"
-                >
-                  Enviar
-                </Button>
+                  style={{ marginTop: "35px" }}
+                  children="Enviar"
+                />
               </Container>
             </ContainerOverlay>
           )}
           <ButtonEdit onClick={props.openModalGarbage}>
             <img src={GarbageIcon} alt="" />
           </ButtonEdit>
-          {props.estadoGarbage && (
+          {props.isOpenGarbage && (
             <ContainerOverlay>
               <ContainerDelete>
                 <span>{props.spanTitleGarbage}</span>
                 <ContainerButtonsGarbage>
-                  <Button
+                  <ButtonMain
                     type="submit"
                     onClick={props.deleteImage}
-                    color="#fff"
-                    backgroundColor="#000"
                     width="true"
-                  >
-                    Sim
-                  </Button>
-                  <Button
+                    children="Sim"
+                  />
+                  <ButtonMain
                     type="submit"
                     onClick={props.notDelete}
-                    color="#000"
+                    color="true"
+                    backgroundColor
                     width="true"
-                  >
-                    Não
-                  </Button>
+                    children="Não"
+                  />
                 </ContainerButtonsGarbage>
               </ContainerDelete>
             </ContainerOverlay>
