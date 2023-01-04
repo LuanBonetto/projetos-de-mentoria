@@ -33,7 +33,7 @@ export function Card(props) {
   return (
     <CardContainer>
       <ContainerImageCard>
-        <CardImage src={props.image} alt="Logo React"></CardImage>
+        <CardImage src={props.image} alt="image"></CardImage>
         <ContainerButtons>
           <ButtonEdit onClick={props.openModal}>
             <img src={EditIcon} alt="" />

@@ -1,10 +1,12 @@
 import styled from "styled-components";
 
 export const CardContainer = styled.div`
-  width: 419px;
-  height: 285px;
+  width: 355px;
+  height: 277px;
   margin: 56px 88px;
+
   /* background-color: #000; */
+
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -13,7 +15,7 @@ export const CardContainer = styled.div`
 export const CardImage = styled.img`
   width: 355px;
   height: 277px;
-  background-color: orange;
+  /* background-color: orange; */
   object-fit: cover;
 `;
 
@@ -72,10 +74,10 @@ export const ButtonEdit = styled.button`
 `;
 
 export const ContainerImageCard = styled.div`
-  display: flex;
+  /* display: flex; */
   /* width: 98%; */
 
-  &:hover ${ContainerButtons} {
+  /* &:hover ${ContainerButtons} {
     display: flex;
-  }
+  } */
 `;
