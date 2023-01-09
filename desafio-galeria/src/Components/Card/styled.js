@@ -20,7 +20,7 @@ export const CardImage = styled.img`
 `;
 
 export const ContainerInfo = styled.div`
-  width: 85%;
+  width: 100%;
   height: 30px;
   margin-top: 7px;
   display: flex;
@@ -49,16 +49,31 @@ export const ContainerButtons = styled.div`
   /* background-color: green; */
   /* align-items: flex-end; */
 
-  display: none;
+  /* display: none; */
   /* display: flex; */
-  position: relative;
+  /* position: relative;
+  width: 30px;
+  height: 45px;
   right: 30px;
   top: 8px;
   flex-direction: column;
-  gap: 8px;
-  height: 90px;
+  background-color: blue;
+  gap: 20px;
   &:hover {
-  }
+  } */
+
+  /* bottom: 274px;
+  left: 328px; */
+  position: relative;
+  bottom: 272px;
+  left: 328px;
+
+  display: flex;
+  flex-direction: column;
+  width: 30px;
+  gap: 8px;
+  opacity: 0;
+  transition: opacity 1s;
 `;
 
 export const ButtonEdit = styled.button`
@@ -75,9 +90,11 @@ export const ButtonEdit = styled.button`
 
 export const ContainerImageCard = styled.div`
   /* display: flex; */
-  /* width: 98%; */
+  height: 277px;
 
-  /* &:hover ${ContainerButtons} {
-    display: flex;
-  } */
+  &:hover {
+    ${ContainerButtons} {
+      opacity: 1;
+    }
+  }
 `;

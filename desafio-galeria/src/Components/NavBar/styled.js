@@ -70,12 +70,13 @@ export const ContainerImages = styled.div`
   display: flex;
   flex-wrap: wrap;
   /* justify-content: center; */
-  padding-left: 94px;
+  padding-left: 250px;
 
   @media screen and (max-width: 1284px) {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    padding-left: 0;
   }
   /* @media screen and (max-width: 1189px) {
     display: flex;
