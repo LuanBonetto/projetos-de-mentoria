@@ -7,6 +7,7 @@ export const NavContainer = styled.nav`
   height: 110px;
   background-color: #202020;
   justify-content: space-between;
+  padding: 27px 120px 27px 120px;
 
   @media screen and (max-width: 1000px) {
     /* display: flex;
@@ -21,8 +22,12 @@ export const Image = styled.img`
 
   width: 68px;
   height: 68px;
-  margin: 21px 21px 21px 120px;
+  /* margin: 21px 21px 21px 120px; */
   /* margin-left: 120px; */
+
+  @media (max-width: 650px) {
+    display: none;
+  }
 `;
 
 export const Input = styled.input`
@@ -36,7 +41,7 @@ export const Input = styled.input`
   gap: 16px;
   width: 320px;
   height: 56px;
-  margin: 27px 120px 27px 0;
+  /* margin: 27px 120px 27px 0; */
   /* margin-right: 120px; */
   flex-direction: row;
   align-items: center;
@@ -69,8 +74,8 @@ export const ContainerImages = styled.div`
 
   display: flex;
   flex-wrap: wrap;
-  /* justify-content: center; */
-  padding-left: 250px;
+  justify-content: center;
+  /* padding-left: 250px; */
 
   @media screen and (max-width: 1284px) {
     display: flex;
@@ -190,4 +195,33 @@ export const ButtonFixed = styled.button`
   border-radius: 36px;
   border: 1px solid #000;
   background-color: #000;
+`;
+
+export const ContainerIconSearch = styled.div`
+  /* position: absolute;
+  display: inline-block;
+
+  left: 400;
+  top: 45; */
+  position: absolute;
+  display: inline-block;
+  /* right: 300px;
+  top: 17px; */
+  right: 400px;
+  top: 45px;
+
+  img {
+    size: 24px;
+  }
+`;
+
+export const ContainerBox = styled.div`
+  display: flex;
+  width: 320px;
+  justify-content: flex-end;
+
+  @media screen and (max-width: 650px) {
+    display: flex;
+    width: 100%;
+  }
 `;

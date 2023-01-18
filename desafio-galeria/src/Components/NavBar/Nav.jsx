@@ -15,6 +15,8 @@ import {
   ImgContainer,
   InputContainer,
   ContainerOverlay,
+  ContainerIconSearch,
+  ContainerBox,
 } from "./styled";
 import closeImage from "../../assets/close.svg";
 import { InputComponent } from "../Input/input";
@@ -138,20 +140,27 @@ export function Nav() {
     <>
       <NavContainer>
         <Image src={logo} alt="Logo Desafio" />
-        <Input
-          type="text"
-          placeholder="Digite aqui"
-          onChange={(e) => setSeach(e.target.value)}
-        />
-        <img
-          src={lupa}
-          alt="icone da lupa"
-          style={{
-            position: "absolute",
-            right: 400,
-            top: 45,
-          }}
-        />
+        <ContainerBox>
+          <Input
+            type="text"
+            placeholder="Digite aqui"
+            onChange={(e) => setSeach(e.target.value)}
+          />
+          <ContainerIconSearch>
+            <img
+              src={lupa}
+              alt="icone da lupa"
+              // style={{
+              //   position: "relative",
+              //   // width: 20,
+              //   // height: 20,
+              //   // right: 200,
+              //   right: 400,
+              //   top: 45,
+              // }}
+            />
+          </ContainerIconSearch>
+        </ContainerBox>
       </NavContainer>
       <ContainerMain>
         <ContainerImages>
